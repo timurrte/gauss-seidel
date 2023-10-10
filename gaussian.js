@@ -49,4 +49,4 @@ let A = [
     [0.037, 0.700, 0.100, 0.325, 6.522]
   ]
 
-console.log(gauss(A))
+console.log("Відповідь: " + gauss(A))

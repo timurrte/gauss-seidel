@@ -27,12 +27,12 @@ function gaussSeidel(a, b, x0, maxIterations, tolerance) {
       }
   
       if (maxDiff < tolerance) {
-        console.log(`Converged after ${iteration + 1} iterations`);
+        console.log(`Зійшлось після ${iteration + 1} ітерацій`);
         return x;
       }
     }
   
-    console.log('Did not converge');
+    console.log('Відповідь не зійшлась');
     return x;
   }
   
@@ -60,13 +60,14 @@ function isDiagonallyDominant(matrix) {
   }
   
 function permuteForDiagonalDominance(A, b) {
+    console.log("Перетворюємо матрицю")
     const n = A.length;
     
     for (let i = 0; i < n; i++) {
       let maxRowIndex = i;
       let maxAbsValue = Math.abs(A[i][i]);
   
-      // Find the row with the maximum absolute value for the current column
+      // Знайдемо рядок з найбільшим значенням в цьому стовпці
       for (let j = i + 1; j < n; j++) {
         const absValue = Math.abs(A[j][i]);
         if (absValue > maxAbsValue) {
@@ -75,13 +76,13 @@ function permuteForDiagonalDominance(A, b) {
         }
       }
   
-      // Swap rows i and maxRowIndex in matrix A
+      // Поміняємо місцями рядок з більшим значенням
       if (maxRowIndex !== i) {
         [A[i], A[maxRowIndex]] = [A[maxRowIndex], A[i]];
         [b[i], b[maxRowIndex]] = [b[maxRowIndex], b[i]];
       }
     }
-  
+    console.log(A, b)
     return { A, b };
   }
 
@@ -94,5 +95,5 @@ let A = [
   ];
 
 let b = [6.383, 4.205, 21.603, 6.522];
-console.log(isDiagonallyDominant(A))
+
 console.log(gaussSeidel(A, b, [0,0,0,0], 100, 0.0001))
